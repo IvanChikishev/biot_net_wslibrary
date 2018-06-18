@@ -6,7 +6,6 @@
 
 ```javascript
 const netcore = require('../netcore');
-const bbConstatns = require('byteballcore/constants');
 const core = require('biot-core');
 
 
