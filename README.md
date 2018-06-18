@@ -5,6 +5,13 @@
 
 
 ```ecmascript 6
+const netcore = require('../netcore');
+const bbConstatns = require('byteballcore/constants');
+const core = require('biot-core');
+
+
+
+
    let bind = netcore.bind([
         core.createNewWallet,
         core.getWallets,
