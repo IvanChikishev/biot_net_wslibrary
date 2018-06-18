@@ -4,10 +4,10 @@
 ##### server-side example
 
 
-```ecmascript 6
-const netcore = require('../netcore');
-const bbConstatns = require('byteballcore/constants');
-const core = require('biot-core');
+```javascript
+   const netcore = require('../netcore');
+   const bbConstatns = require('byteballcore/constants');
+   const core = require('biot-core');
 
 
 
