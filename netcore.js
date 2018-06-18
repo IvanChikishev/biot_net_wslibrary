@@ -1,27 +1,37 @@
 const WebSocket = require('ws');
 
-
+/**
+ * @param state
+ * @description Creates an array of processed functions
+ * @example
+ *
+ * bind([function, function1, function 2]);
+ *
+ */
 module.exports.bind = function (state) {
     let _m_array = {};
-
     for (let _callbackID in state) {
         let _callback = state[_callbackID];
-
         _m_array[_callback.name] = _callback;
     }
-
-
     return _m_array;
 };
 
+
+/**
+ * @description Initializes the socket using the processed functions, to be called from a third-party client
+ * @param bind
+ * @param state
+ * @return WebSocket.Server
+ * @example
+ *
+ * init(bind, {port:3303});
+ *
+ */
 module.exports.init = function (bind, state) {
-
     let server = new WebSocket.Server(state);
-
-
     server.on('connection', function (socket) {
         socket.on('message', async (message) => {
-
             try {
                 message = JSON.parse(message);
 
@@ -36,21 +46,18 @@ module.exports.init = function (bind, state) {
                     socket.send(JSON.stringify([message[0], _callbackID, 0, "Command not found"]));
                 }
             }
-
             catch (e) {
                 socket.send(JSON.stringify([message[0], message[1], -1, e]));
             }
-
         });
 
 
-        socket.on('error', () => {
-        });
-        socket.on('close', () => {
-            socket.close();
-        });
+        socket
+            .on('error', (error) =>
+            console.error(error))
+
+            .on('close', () =>
+            socket.close());
     });
-
-
     return server;
 };
