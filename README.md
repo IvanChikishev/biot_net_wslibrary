@@ -1,7 +1,9 @@
-#biot-net_wslibrary
 
-###Initialize server side
-####
+
+### Initialize server side
+##### server-side example
+
+
 ```ecmascript 6
    let bind = netcore.bind([
         core.createNewWallet,
