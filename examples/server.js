@@ -1,5 +1,4 @@
-const netcore = require('./netcore');
-const testcode = require('./examples/test');
+const netcore = require('../netcore');
 const bbConstatns = require('byteballcore/constants');
 const core = require('biot-core');
 
