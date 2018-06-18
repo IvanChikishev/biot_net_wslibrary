@@ -82,10 +82,7 @@ async function Start() {
     await core.init('test');
     let server = netcore.init(bind, {host: '127.0.0.1', port: 23232});
 
-
-    await new Promise(resolve => setTimeout(resolve, 2000));
     test();
-
     return 'ok';
 }
 
