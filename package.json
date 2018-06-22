@@ -1,6 +1,7 @@
 {
   "name": "biot-networking",
   "version": "0.0.1",
+  "main": "./netcore.js",
   "dependencies": {
     "ws": "^5.2.0",
     "biot-core": "0.0.10"
