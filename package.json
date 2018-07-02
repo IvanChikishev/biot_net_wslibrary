@@ -1,8 +1,12 @@
 {
   "name": "biot-networking",
   "version": "0.0.1",
-  "main": "./netcore.js",
+  "main": "./socket.js",
   "dependencies": {
-    "ws": "^5.2.0"
+    "ws": "^5.2.1"
+  },
+  "devDependencies": {
+    "biot-wsclient": "git+https://github.com/remmelgas/biot-net_clientproccessed.git"
+
   }
 }
