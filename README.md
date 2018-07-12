@@ -1,45 +1,68 @@
 
 
-### biot_net_wslibrary
-##### server-side example
+# biot-wsocket
+## Websocket server for [biot-core](https://github.com/BIoTws/biot-core) library, initializes the network bridge, supports async / await.
 
+
+
+## How to install
+</br>
+
+#### downloads project files
+```
+> git clone https://github.com/remmelgas/biot-wsocket
+```
+
+#### install dependencies
+```
+> npm install
+> ./testnetify.sh
+```
+
+#### run server
+```
+> node server
+```
+</br>
+
+
+## Example client
+
+> For an example on nodejs, we will use the [biot-wsclient](https://github.com/remmelgas/biot-wsclient) library
+
+</br>
+
+```
+> npm --save -i https://github.com/remmelgas/biot-wsclient.git
+```
+
+</br></br>
 
 ```javascript
-const netcore = require('../netcore');
-const core = require('biot-core');
+const wsclient = require('biot-wsclient');
+const ws = require('ws');
 
 
+function Start() {
+    let client = new ws('ws://127.0.0.1:3303');
 
-async function Start() {
-    let bind = netcore.bind([
-        core.createNewWallet,
-        core.getWallets,
-        core.getMyDeviceWallets,
-        core.getAddressesInWallet,
-        core.createNewAddress,
-        core.getWalletBalance,
-        core.getAddressBalance,
-        core.sendTextMessageToDevice,
-        core.sendTechMessageToDevice,
-        core.sendPaymentFromWallet,
-        core.sendPaymentFromWalletUseUnstableUnits,
-        core.getListTransactionsForAddress,
-        core.getListTransactionsForWallet,
-        core.myAddressInfo,
-        core.signDevicePrivateKey,
-        core.signWithAddress,
-        core.verifySign,
-        core.addCorrespondent,
-        core.removeCorrespondent,
-        core.listCorrespondents
-    ]);
+    client.on('open', async () => {
+        let stream = wsclient(client);
 
-    await core.init('test');
-    let server = netcore.init(bind, {host: '127.0.0.1', port: 23232});
 
-    return 'ok';
+        let result = await stream.send({
+            name: 'getMyDeviceWallets', args: []
+        });
+
+
+        console.log(result[1]);
+    });
+
 }
 
-
-Start().then(console.log).catch(console.error);
+Start();
+```
+#### terminal
+```
+> node examples/example1
 ```

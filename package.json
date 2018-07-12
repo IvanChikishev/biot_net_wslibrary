@@ -1,12 +1,12 @@
 {
-  "name": "biot-networking",
-  "version": "0.0.1",
-  "main": "./socket.js",
+  "name": "biot-wsocket",
+  "version": "1.0.0",
+  "main": "./server.js",
   "dependencies": {
-    "ws": "^5.2.1"
+    "ws": "^5.2.1",
+    "biot-core": "git+https://github.com/BIoTws/biot-core.git"
   },
   "devDependencies": {
-    "biot-wsclient": "git+https://github.com/remmelgas/biot-net_clientproccessed.git"
-
+    "biot-wsclient": "git+https://github.com/remmelgas/biot-wsclient.git"
   }
 }

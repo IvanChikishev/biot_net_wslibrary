@@ -8,9 +8,9 @@ const uncompress = function(stateData) {
   return JSON.parse(stateData || {});
 };
 
-const createServer = function(state, configure) {
+const createServer = function(state, configure = {}) {
   let server = new WebSocket.Server(configure);
-  let seqeunceState = new Array();
+  let seqeunceState = {};
 
   for (let stateActionId in state) {
     let action = state[stateActionId];
