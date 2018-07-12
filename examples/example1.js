@@ -8,7 +8,6 @@ function Start() {
     client.on('open', async () => {
         let stream = wsclient(client);
 
-
         let result = await stream.send({
             name: 'getMyDeviceWallets', args: []
         });
