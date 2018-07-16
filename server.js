@@ -2,6 +2,7 @@ const core = require('biot-core');
 const net = require('./core');
 
 const PORT = 3303;
+const PASS = 123;
 
 
 async function Start() {
@@ -28,7 +29,7 @@ async function Start() {
         core.addCorrespondent,
         core.removeCorrespondent,
         core.listCorrespondents
-      ], { port: 3303 });
+      ], { port: 3303 }, PASS);
 
       return 'Ok';
 }
